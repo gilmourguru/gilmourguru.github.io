@@ -1,0 +1,32 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="!(isHandset$ | async)">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <h2 matSubheader>Fish</h2>
+      <a mat-list-item routerLink="/trout-cards" routerLinkActive="active">Trout</a>
+      <mat-divider></mat-divider>
+      <h2 matSubheader>Tackle</h2>
+      <a mat-list-item routerLink="/lures" routerLinkActive="active">Lures</a>
+      <a mat-list-item routerLink="/flies" routerLinkActive="active">Flies &amp; Nymphs</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/my-fishing-holes" routerLinkActive="active">My Fishing Holes</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" class="mat-elevation-z6">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span routerLink="">{{title}}</span>
+      <span class=""></span>
+    </mat-toolbar>
+    <jumbo-home></jumbo-home>
+    <router-outlet></router-outlet>
+
+
+
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

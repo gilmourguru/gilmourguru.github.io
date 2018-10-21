@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-mat-boot';
+  title = 'Angular 6';
+  subtitle = 'with Material Boostrap 4.1.3';
 }

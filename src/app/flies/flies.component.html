@@ -1,0 +1,65 @@
+<h1 class="mat-h1 text-center">{{pg_title}}</h1>
+
+    <mat-grid-list cols="1" rowHeight="350px">
+        <mat-grid-tile colspan="1" rowspan="1">
+                <mat-card class="midge-card">
+                        <mat-card-header>
+                            <div mat-card-avatar class="midge-header-image"></div>
+                            <mat-card-title>
+                                <h2 class="mat-h2">{{midgeCard.title}}</h2>
+                                <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                                    <mat-icon>more_vert</mat-icon>
+                                </button>
+                                <mat-menu #menu="matMenu" xPosition="before">
+                                    <button mat-menu-item>Expand</button>
+                                    <button mat-menu-item>Remove</button>
+                                </mat-menu>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-divider></mat-divider>
+                        <br>
+                        <mat-card-content class="dashboard-card-content">
+                            <p>{{midgeCard.content}}</p>
+                            <mat-list>
+                                <mat-list-item><b>Colors:</b><span class="value">{{midgeCard.colors}}</span></mat-list-item>
+                                <mat-list-item><b>Sizes:</b><span class="value">{{midgeCard.sizes}}</span></mat-list-item>
+                            </mat-list>
+                        </mat-card-content>
+                    </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+        
+    <mat-divider></mat-divider>
+
+<div class="grid-container">
+    <h2 class="mat-h2 text-center">{{mayflyHdr}}</h2>
+    <mat-grid-list cols="3" rowHeight="620px">
+        <mat-grid-tile *ngFor="let card of mayflyCards | async" [colspan]="card.cols" [rowspan]="card.rows">
+            <mat-card class="dashboard-card trout-card">
+                <mat-card-header>
+                    <div mat-card-avatar class="card-header-image" [style.backgroundImage]="'url(' + card.avatar + ')'"></div>
+                    <mat-card-title>
+                        <h2 class="mat-h2">{{card.title}}</h2>
+                        <!-- <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu" xPosition="before">
+                            <button mat-menu-item (click)="togglePhotoExpand()">Expand</button>
+                            <button mat-menu-item>Remove</button>
+                        </mat-menu> -->
+                    </mat-card-title>
+                </mat-card-header>
+                <div class="fly-img-wrapper">
+                    <img mat-card-image src={{card.avatar}}>
+                </div>
+                <mat-card-content class="dashboard-card-content">
+                    <mat-list>
+                        <mat-list-item><span><b>Season:</b></span><span class="value">{{card.season}}</span></mat-list-item>
+                        <mat-list-item><b>Colors:</b><span class="value">{{card.colors}}</span></mat-list-item>
+                        <mat-list-item><b>Sizes:</b><span class="value">{{card.sizes}}</span></mat-list-item>
+                    </mat-list>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

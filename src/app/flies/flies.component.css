@@ -1,0 +1,41 @@
+.text-center {
+    text-align: center;
+  }
+  
+  .grid-container {
+    margin: 20px;
+  }
+  
+  .dashboard-card {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    overflow: auto;
+  }
+  
+  .more-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+  
+  .dashboard-card-content {
+    text-align: left;
+    overflow: hidden;
+  }
+  .midge-header-image {
+  background-image: url('../../assets/icons/icon-stonefly-512x512.png');
+  background-size: cover;
+  }
+  .card-header-image {
+    background-size: cover;
+  }
+  .value {
+    padding-left: 12px;
+  }
+  .fly-img-wrapper {
+    width: 50%;
+    margin: 0 auto;
+  }

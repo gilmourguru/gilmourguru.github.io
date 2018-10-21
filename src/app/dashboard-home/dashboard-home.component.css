@@ -1,0 +1,42 @@
+.grid-container {
+  margin: 20px;
+  
+}
+
+/* .flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+} */
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 22%;
+  right: 15px;
+  bottom: 15px;
+  max-width: 520px;;
+  padding-bottom: 15px;
+  overflow: hidden;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+.text-center {
+  text-align: center;
+}
+.dash-container {
+  margin: 0 auto;
+}
+
+

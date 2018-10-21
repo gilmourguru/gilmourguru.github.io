@@ -1,0 +1,27 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+  z-index: 2;
+}
+/* #jumbo-home {
+  background: url('../../assets/images/taylor-river-1.jpg');
+  background-size: cover;
+  width: 100%;
+  min-height: 1080px;
+} */
+.text-center {
+  text-align: center;
+}
+.title-jumbo-home {
+  padding-top: 128px;
+  color: whitesmoke;
+}

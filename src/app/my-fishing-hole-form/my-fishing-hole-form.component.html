@@ -1,0 +1,81 @@
+<form [formGroup]="newFishingHoleForm" #newFishingHole="ngForm" novalidate>
+  <mat-card class="new-fishing-hole-card">
+    <mat-card-header>
+      <mat-card-title>New Fishing Hole</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="River/Stream" formControlName="river">
+            <mat-error *ngIf="newFishingHoleForm.controls['river'].hasError('required')">
+                River/Stream is <strong>required</strong>
+              </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Nickname" formControlName="nickName">
+            <mat-error *ngIf="newFishingHoleForm.controls['nickName'].hasError('required')">
+              Nickname is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <textarea matInput placeholder="Nearest Access Road" formControlName="accessRoad"></textarea>
+            <mat-error *ngIf="newFishingHoleForm.controls['accessRoad'].hasError('required')">
+              Nearest access road is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="City" formControlName="city">
+            <mat-error *ngIf="newFishingHoleForm.controls['city'].hasError('required')">
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <mat-select placeholder="State" formControlName="state">
+              <mat-option *ngFor="let state of states" [value]="state.abbreviation">
+                {{ state.name }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="newFishingHoleForm.controls['state'].hasError('required')">
+              State is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput #geoCode placeholder="geoCode" type="text" formControlName="geoCode">
+            
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <mat-radio-group formControlName="riverLevel">
+            <mat-radio-button value="low">Low</mat-radio-button>
+            <mat-radio-button value="avg">Avg</mat-radio-button>
+            <mat-radio-button value="high">High</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

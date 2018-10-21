@@ -1,0 +1,17 @@
+<mat-grid-list class="home-container" cols="1" rowHeight='720px'>
+    <mat-grid-tile colspan="1" rowspan="1">
+            <mat-card class="homeCard">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <h2 class="mat-h2 text-center">{{homeCard.title}}</h2>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <img mat-card-image src={{homeCard.photo}}>
+                    <br>
+                    <mat-card-content class="home-card-content">
+                        <p>{{homeCard.content}}</p>
+                    </mat-card-content>
+                </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+<dashboard-home></dashboard-home>
