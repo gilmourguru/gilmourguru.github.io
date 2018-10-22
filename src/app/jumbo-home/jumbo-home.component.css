@@ -6,9 +6,12 @@
   }
   .text-center {
     text-align: center;
+    font-size: 2.6em;
+    color: whitesmoke;
+    font-family: 'Poppins', sans-serif;
   }
   .title-jumbo-home {
-    padding-top: 36px;
-    color: whitesmoke;
-    font-size: 1.5em;
+    padding-top: 96px;
+    
+    
   }

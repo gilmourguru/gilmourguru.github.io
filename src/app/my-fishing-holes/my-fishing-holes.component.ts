@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { AuthService } from '../auth/auth.service';
+import { MyNavComponent } from '../my-nav/my-nav.component';
+import { Router } from '@angular/router';
 
 
 
@@ -18,7 +22,9 @@ export class MyFishingHolesComponent implements OnInit {
     city: null,
     state: null,
     geoCode: null,
-    riverLevel: 'avg'
+    riverLevel: 'avg', 
+    dateCreate: null, 
+    timeCreate: null
   });
 
   states = [
@@ -94,30 +100,37 @@ export class MyFishingHolesComponent implements OnInit {
 
   myForm = document.getElementById('addHoleForm');
 
+  
+  
+
   addFishingHole() {
     this.isEdit = !this.isEdit;
   }
 
-  constructor(private fb: FormBuilder, private db: AngularFireDatabase) {}
+  constructor(private fb: FormBuilder, private db: AngularFirestore, private auth: AuthService, private mynav: MyNavComponent, private router: Router) {}
 
-  addHoleToFirebase(newHole) {
-      this.db.list('/my-fishing-holes').push(newHole).then(_ => {
+  addHoleToFirestore(newHole) {
+    const newDocRef: AngularFirestoreDocument<any> = this.db.doc(`my-fishing-holes/${newHole.nickName}`);
+      newDocRef.set(newHole, { merge: true })
         newHole = {}
-        console.log('success')
-      })
+        console.log('Firestore Add New Fishing Hole = SUCCESS');
+      
   }
 
   ngOnInit() {
   }
 
   onSubmit() {
-    
+    let submitDateTime = this.mynav.getCurrentTime();
+    this.newFishingHole.dateCreate = submitDateTime[0];
+    this.newFishingHole.timeCreate = submitDateTime[1];
     console.log(this.newFishingHole);
-    this.addHoleToFirebase(this.newFishingHole);
+    this.addHoleToFirestore(this.newFishingHole);
     this.submitted = true;
     this.isEdit = !this.isEdit;
     alert('New Fishing Hole ' + '"' + this.newFishingHole.nickName + '"' + ' Added!');
     this.newFishingHole = {};
+    // location.reload(true); 
     // this.myFishingHoles.push(this.newFishingHole);
     // console.log(this.myFishingHoles);
     // document.body.appendChild(this.myForm);

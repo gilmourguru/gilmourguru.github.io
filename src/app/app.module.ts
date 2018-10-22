@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -34,15 +34,19 @@ import { MyFishingHolesComponent } from './my-fishing-holes/my-fishing-holes.com
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { MyFishingHoleFeedComponent } from './my-fishing-hole-feed/my-fishing-hole-feed.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { AuthGuard } from './core/auth.guard';
 
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent }, 
+  { path: 'auth', component: UserProfileComponent }, 
   { path: 'dashboard', component: DashboardHomeComponent }, 
   { path: 'trout-cards', component: TroutCardsComponent }, 
   { path: 'lures', component: LuresComponent }, 
   { path: 'flies', component: FliesComponent }, 
-  { path: 'my-fishing-holes', component: MyFishingHolesComponent }, 
+  { path: 'my-fishing-holes', component: MyFishingHolesComponent}, 
   { path: '**', component: Notfound404Component }
   
 ];
@@ -60,14 +64,16 @@ const appRoutes: Routes = [
     DashboardHomeComponent,
     MyFishingHoleFormComponent,
     MyFishingHolesComponent,
-    MyFishingHoleFeedComponent
+    MyFishingHoleFeedComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), 
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
+    AngularFireDatabaseModule, 
+    CoreModule, 
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
@@ -80,7 +86,7 @@ const appRoutes: Routes = [
     FormsModule, 
     RouterModule.forRoot(
       appRoutes, { enableTracing: true }
-    ), MatInputModule, MatSelectModule, MatRadioModule, ReactiveFormsModule, MatTableModule, MatPaginatorModule, MatSortModule
+    ), MatInputModule, MatSelectModule, MatRadioModule, ReactiveFormsModule, MatTableModule, MatPaginatorModule, MatSortModule, HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

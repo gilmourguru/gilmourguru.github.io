@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { MatPaginator, MatSort } from '@angular/material';
 import { MyFishingHoleFeedDataSource, MyFishingHoleFeedItem } from './my-fishing-hole-feed-datasource';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { pipe, Subscription } from 'rxjs';
 import { map, first } from 'rxjs/operators';
 
@@ -19,12 +19,12 @@ export class MyFishingHoleFeedComponent implements OnInit, OnDestroy {
   displayedColumns = ['nickName', 'river', 'accessRoad', 'city', 'state', 'geoCode', 'riverLevel'];
   subscription: Subscription;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFirestore) {
 
   }
 
   ngOnInit() {
-    this.subscription = this.db.list<MyFishingHoleFeedItem>('my-fishing-holes').valueChanges().pipe(first()).subscribe(d=>{
+    this.subscription = this.db.collection<MyFishingHoleFeedItem>('my-fishing-holes').valueChanges().pipe(first()).subscribe(d=>{
       console.log('data streaming');
       this.dataSource = new MyFishingHoleFeedDataSource(this.paginator, this.sort);
       this.dataSource.data = d;

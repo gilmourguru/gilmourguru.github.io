@@ -18,10 +18,19 @@
       <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span routerLink="">{{title}}</span>
-      <span class=""></span>
+      <span id="appName" routerLink="">{{title}}</span>
+      <span class="fill-space"></span>
+      <span class="weather">{{city}}</span>
+      <span class="weather">{{fullDate}}</span>
+      <img id="weatherIcon" src='{{iconUrl}}' (click)="ngOnInit()">
+      <span class="weather">{{weather}}</span>
+      <span class="weather-div">|</span>
+      <span class="weather-label">Temp: </span>
+      <span class="weather-temp">{{temp}}˚</span>
+      <span class="weather user-photo"></span>
     </mat-toolbar>
     <jumbo-home></jumbo-home>
+    
     <router-outlet></router-outlet>
 
 

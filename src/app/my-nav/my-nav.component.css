@@ -25,3 +25,48 @@
   padding-top: 128px;
   color: whitesmoke;
 }
+.fill-space {
+  display: flex;
+  flex: 1 1 auto;
+}
+.weather {
+  display: flex;
+  letter-spacing: .1em;
+  color: accent;
+  font-size: 16px;
+  padding: 8px;
+}
+.weather-temp {
+  display: flex;
+  letter-spacing: .1em;
+  color: accent;
+  font-size: 20px;
+  padding: 8px;
+}
+.weather-div {
+  display: flex;
+  letter-spacing: .1em;
+  color: accent;
+  font-size: 32px;
+  
+}
+.weather-label {
+  display: flex;
+  letter-spacing: .1em;
+  color: accent;
+  font-size: 12px;
+  padding: 8px;
+}
+#appName:hover {
+  cursor: pointer;
+}
+#wxIconHolder {
+  display: inline;
+}
+#wxIconHolder>img {
+  width: 75px;
+  height: 75px;
+}
+#weatherIcon:hover {
+  cursor: pointer;
+}
